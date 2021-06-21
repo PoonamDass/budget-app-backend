@@ -8,6 +8,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.use((req,res, next) => {
+  console.log(`${req.method} request made a t${req.url}`)
+  next()
+})
+
 //when someone goes to a route that starts with /items
 app.use("/transactions", transactionsController)
 
